@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modal</title>
+    <style>
+      body {
+        background-image: url("book.png");
+      }
+      .parentDiv {
+        padding: 12px 8px;
+        border-radius: 8px;
+        height: 120px;
+        width: 300px;
+        background-color: white;
+        position: fixed;
+        top: 40%;
+        left: 50%;
+      }
+      .parentDiv > .heading {
+        text-align: center;
+      }
+      .parentDiv > .btn {
+        padding: 2px 4px;
+        text-transform: uppercase;
+        background-color: rgba(27, 131, 243, 0.91);
+        border: none;
+        align-items: center;
+        text-align: center;
+        margin-left: 35%;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+      }
+      .parentDiv > .btn:hover {
+        opacity: 0.6;
+      }
+      .childDiv {
+        visibility: hidden;
+        padding: 12px 8px;
+        border-radius: 8px;
+        height: 120px;
+        width: 300px;
+        background-color: lightblue;
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        z-index: 1000;
+      }
+      .close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parentDiv">
+      <h2 class="heading">Modal Project</h2>
+      <button class="btn">open Modal</button>
+    </div>
+    <div class="childDiv">
+      <h2 class="heading">New Model</h2>
+      <button class="close">X</button>
+    </div>
+    <script>
+      let btnElement = document.querySelector(".btn");
+      let parentDiv = document.querySelector(".parentDiv");
+      btnElement.addEventListener("click", function () {
+        document.body.style.opacity = 0.3;
+        parentDiv.style.visibility = "hidden";
+        let childDiv = document.querySelector(".childDiv");
+        childDiv.style.visibility = "visible";
+        childDiv.style.zIndex = "1000";
+      });
+      let closeBtnElement = document.querySelector(".close");
+      closeBtnElement.addEventListener("click", function () {
+        let childDiv = document.querySelector(".childDiv");
+        childDiv.style.visibility = "hidden";
+
+        parentDiv.style.visibility = "visible";
+        document.body.style.opacity = 1;
+      });
+    </script>
+  </body>
+</html>
